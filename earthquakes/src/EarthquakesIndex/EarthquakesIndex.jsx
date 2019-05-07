@@ -4,16 +4,27 @@ class EarthquakesIndex extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      earthquakes: []
+      earthquakes: [],
+      loadingState: '',
     }
   }
 
-  componentDidMount(){
-    this.getQuakes()
+  handleClick = (e) => {
+    e.target.name === "all" ?
+    this.getQuakes('all_month')
+    :
+    this.getQuakes('significant_month')
   }
-  getQuakes = async () => {
+  getQuakes = async (param) => {
+    this.setState({
+      loadingState: 'Fetching Quakes...'
+    })
 
-    const foundEarthquakes = await fetch('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson')
+    const foundEarthquakes = await fetch(`https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/${param}.geojson`)
+
+    this.setState({
+      loadingState: 'Analyzing Destruction...'
+    })
 
     const parsedEarthquakes = await foundEarthquakes.json()
 
@@ -28,7 +39,10 @@ class EarthquakesIndex extends Component {
       </li>
     })
 
-    this.setState({earthquakes: earthquakesShow})
+    this.setState({
+      earthquakes: earthquakesShow,
+      loadingState: ''
+    })
 
     this.props.findQuakes(earthquakesArray)
 
@@ -36,6 +50,9 @@ class EarthquakesIndex extends Component {
 
   render() {
     return (<div>
+      <button name="signinficant" onClick={this.handleClick}>View Signinficant Quakes</button>
+      <button name="all" onClick={this.handleClick}>View All Quakes</button>
+      <h2>{this.state.loadingState}</h2>
       <ul>{this.state.earthquakes}</ul>
     </div>)
   }
