@@ -16,6 +16,7 @@ body {
 #map {
   position: fixed;
   float: right;
+  
 }
 
 .title {
@@ -35,6 +36,3 @@ ul {
   text-decoration: none;
 }
 
-Map {
-  border-radius: 10px;
-}

@@ -25,6 +25,7 @@ class GoogleMaps extends Component{
         <Marker key={quake.lat} position = {{
           lat: quake.lat,
           lng: quake.lng
+          
         }} />
       )
     })
@@ -36,6 +37,7 @@ class GoogleMaps extends Component{
 
   render(){
       console.log(this.state.markers)
+      console.log(this.props, "<-- this.props")
     return(
       <Map
         google={this.props.google}
