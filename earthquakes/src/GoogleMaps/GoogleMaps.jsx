@@ -4,19 +4,12 @@ import { Map, GoogleApiWrapper } from 'google-maps-react'
 
 const mapStyles = {
   width: '100%',
-  height: '100vh'
+  height: '70vh',
 };
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 class GoogleMaps extends Component{
-  static defaultProps = {
-    center: {
-      lat: 59.95,
-      lng: 30.33
-    },
-    zoom: 11
-  }
 
 
   render(){
@@ -35,4 +28,8 @@ class GoogleMaps extends Component{
 }
 
 
-export default GoogleMaps
+export default GoogleApiWrapper({
+
+  apiKey: 'AIzaSyBTZGOGbIX7H_71sBsvvwm2OF2HWatCvZo'
+
+})(GoogleMaps)

@@ -8,10 +8,10 @@ function App() {
     <div>
       <h1 class="title">EARTHQUAKES ON EARTH</h1>
       <div class="box">
-        <GoogleMaps />
-      </div>
-      <div class="box">
         <EarthquakesIndex />
+      </div>
+      <div class="box" id="map">
+        <GoogleMaps />
       </div>
     </div>
   );

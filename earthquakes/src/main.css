@@ -1,7 +1,13 @@
 .box {
   display: inline-block;
   width: 50%;
+  height: 100%;
   vertical-align: top;
+}
+
+#map {
+  position: fixed;
+  float: right;
 }
 
 .title {
