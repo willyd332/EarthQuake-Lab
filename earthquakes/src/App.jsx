@@ -13,6 +13,7 @@ function App() {
       const location = {
         lng:quake.geometry.coordinates[0],
         lat:quake.geometry.coordinates[1],
+        mag:quake.properties.mag
       }
       return location
     })
