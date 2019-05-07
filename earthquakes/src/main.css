@@ -38,3 +38,6 @@ ul {
 Map {
   border-radius: 10px;
 }
+Marker icon {
+  width: 20px;
+}

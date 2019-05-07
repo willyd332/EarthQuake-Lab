@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
-
+import icon from './marker-images';
 
 const mapStyles = {
   width: '100%',
   height: '70vh',
 };
+
 
 class GoogleMaps extends Component{
   constructor(props){
@@ -20,12 +21,14 @@ class GoogleMaps extends Component{
   }
 
   createMarkers(){
-    const newMarkers = this.props.quakesLocation.map((quake) => {
+    const newMarkers = this.props.quakesLocation.map((quake,) => {
       return(
         <Marker key={quake.lat} position = {{
           lat: quake.lat,
           lng: quake.lng
-        }} />
+        }} icon= {
+          quake.mag 
+         } />
       )
     })
     this.setState({
@@ -48,10 +51,12 @@ class GoogleMaps extends Component{
       >
         {this.props.quakesLocation.map((quake) => {
           return(
-            <Marker key={quake.lat} position = {{
+            <Marker key={quake.lat} 
+            position = {{
               lat: quake.lat,
               lng: quake.lng
-            }} />
+            }} 
+            icon={ icon } />
           )
         })}
       </Map>
