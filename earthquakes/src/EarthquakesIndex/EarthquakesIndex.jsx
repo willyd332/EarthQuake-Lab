@@ -13,7 +13,7 @@ class EarthquakesIndex extends Component {
   }
   getQuakes = async () => {
 
-    const foundEarthquakes = await fetch('http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_week.geojson')
+    const foundEarthquakes = await fetch('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson')
 
     const parsedEarthquakes = await foundEarthquakes.json()
 

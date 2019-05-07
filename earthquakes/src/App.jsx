@@ -1,13 +1,16 @@
 import React from 'react';
-import EarthquakesIndex from "./EarthquakesIndex/EarthquakesIndex.jsx"
+import './main.css'
+import EarthquakesIndex from './EarthquakesIndex/EarthquakesIndex.jsx'
+import GoogleMaps from './GoogleMaps/GoogleMaps.jsx'
 
 function App() {
   return (
     <div>
-      <div>
-
+      <h1 class="title">EARTHQUAKES ON EARTH</h1>
+      <div class="box">
+        <GoogleMaps />
       </div>
-      <div>
+      <div class="box">
         <EarthquakesIndex />
       </div>
     </div>
