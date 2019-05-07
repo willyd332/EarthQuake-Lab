@@ -24,11 +24,13 @@ class EarthquakesIndex extends Component {
       return <li key={currQuake.properties.ids}>
         <h1>Magnitude: {currQuake.properties.mag}</h1>
         <h2>Location: {currQuake.properties.place}</h2>
-        <h3>Lon: {currQuake.geometry.coordinates[0]}&deg; Lat: {currQuake.geometry.coordinates[1]}&deg; Depth: {currQuake.geometry.coordinates[2]}KM</h3>
+        <h3>Lng: {currQuake.geometry.coordinates[0]}&deg; Lat: {currQuake.geometry.coordinates[1]}&deg; Depth: {currQuake.geometry.coordinates[2]}KM</h3>
       </li>
     })
 
     this.setState({earthquakes: earthquakesShow})
+
+    this.props.findQuakes(earthquakesArray)
 
   }
 

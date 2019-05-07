@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper } from 'google-maps-react'
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 
 
 const mapStyles = {
@@ -7,22 +7,54 @@ const mapStyles = {
   height: '70vh',
 };
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
-
 class GoogleMaps extends Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      markers: []
+    }
+  }
+
+  componentDidMount(){
+    this.createMarkers()
+  }
+
+  createMarkers(){
+    const newMarkers = this.props.quakesLocation.map((quake) => {
+      return(
+        <Marker key={quake.lat} position = {{
+          lat: quake.lat,
+          lng: quake.lng
+        }} />
+      )
+    })
+    this.setState({
+      markers: newMarkers,
+    })
+  }
 
 
   render(){
+      console.log(this.state.markers)
     return(
       <Map
         google={this.props.google}
-        zoom={14}
+        zoom={2}
         style={mapStyles}
         initialCenter={{
-          lat: -1.2884,
-          lng: 36.8233
+          lat: 39.7392,
+          lng: -104.9903
         }}
-      />
+      >
+        {this.props.quakesLocation.map((quake) => {
+          return(
+            <Marker key={quake.lat} position = {{
+              lat: quake.lat,
+              lng: quake.lng
+            }} />
+          )
+        })}
+      </Map>
     )
   }
 }
@@ -32,4 +64,4 @@ export default GoogleApiWrapper({
 
   apiKey: 'AIzaSyBTZGOGbIX7H_71sBsvvwm2OF2HWatCvZo'
 
-})(GoogleMaps)
+})(GoogleMaps);
