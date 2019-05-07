@@ -6,18 +6,20 @@ import { useState } from 'react'
 
 function App() {
 
-  const [quakes, setQuakes] = useState([])
+  const [quakes, setQuakes] = useState([]);
 
   const findQuakes = (earthquakes) => {
     const locationArray = earthquakes.map((quake) => {
       const location = {
         lng:quake.geometry.coordinates[0],
         lat:quake.geometry.coordinates[1],
+        mag:quake.properties.mag
       }
       return location
     })
     setQuakes(locationArray)
   }
+  
   return (
     <div>
       <h1 className="title">EARTHQUAKES ON EARTH</h1>
